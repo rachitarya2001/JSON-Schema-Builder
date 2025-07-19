@@ -7,10 +7,8 @@ import { generateJson } from '@/utils/jsonGenerator';
 export default function MainLayout() {
     const [fields, setFields] = useState<SchemaField[]>([]);
 
-    // Generate unique ID for new fields
     const generateId = () => `field_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
-    // Add new top-level field
     const addField = () => {
         const newField: SchemaField = {
             id: generateId(),
@@ -22,7 +20,6 @@ export default function MainLayout() {
         setFields(prev => [...prev, newField]);
     };
 
-    // Add nested field to a parent
     const addNestedField = (parentId: string) => {
         const newField: SchemaField = {
             id: generateId(),
@@ -34,17 +31,14 @@ export default function MainLayout() {
         setFields(prev => addFieldToParent(prev, parentId, newField));
     };
 
-    // Update field (works for nested too)
     const updateField = (fieldId: string, updates: Partial<SchemaField>) => {
         setFields(prev => updateNestedField(prev, fieldId, updates));
     };
 
-    // Delete field (works for nested too)
     const deleteField = (fieldId: string) => {
         setFields(prev => removeNestedField(prev, fieldId));
     };
 
-    // Generate JSON for preview
     const jsonOutput = generateJson(fields);
 
     return (
@@ -82,7 +76,6 @@ export default function MainLayout() {
     );
 }
 
-// Helper functions for nested operations
 function addFieldToParent(fields: SchemaField[], parentId: string, newField: SchemaField): SchemaField[] {
     return fields.map(field => {
         if (field.id === parentId) {

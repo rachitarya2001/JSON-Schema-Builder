@@ -20,7 +20,6 @@ export default function FieldRow({
 }: FieldRowProps) {
     return (
         <div className="space-y-2">
-            {/* Main Field Row */}
             <div
                 className="flex items-center gap-6 p-6 border rounded-lg bg-card"
                 style={{
@@ -28,7 +27,7 @@ export default function FieldRow({
                     borderWidth: level > 0 ? '2px' : '1px'
                 }}
             >
-                {/* Field Name Input */}
+
                 <Input
                     placeholder="Field name"
                     value={field.name}
@@ -36,7 +35,7 @@ export default function FieldRow({
                     className="flex-1"
                 />
 
-                {/* Field Type Select */}
+
                 <Select
                     value={field.type}
                     onValueChange={(type: FieldType) => onUpdate(field.id, { type })}
@@ -51,7 +50,7 @@ export default function FieldRow({
                     </SelectContent>
                 </Select>
 
-                {/* Add Nested Button (only for Nested type) */}
+
                 {field.type === 'Nested' && (
                     <Button
                         variant="outline"
@@ -63,7 +62,6 @@ export default function FieldRow({
                     </Button>
                 )}
 
-                {/* Delete Button */}
                 <Button
                     variant="destructive"
                     size="sm"
@@ -73,7 +71,7 @@ export default function FieldRow({
                 </Button>
             </div>
 
-            {/* Nested Children (Recursive) */}
+
             {field.type === 'Nested' && field.children && field.children.length > 0 && (
                 <div className="space-y-4">
                     {field.children.map(child => (

@@ -32,28 +32,23 @@ export default function SchemaForm({
     const validateSchema = (): string[] => {
         const errors: string[] = [];
 
-        // Recursive function to check all fields
         const checkFields = (fieldsToCheck: SchemaField[], level = 0, parentName = 'root'): void => {
             fieldsToCheck.forEach((field, index) => {
                 const fieldPosition = level === 0 ? `Field ${index + 1}` : `Nested field under "${parentName}"`;
 
-                // Check for empty names
                 if (!field.name || field.name.trim() === '') {
                     errors.push(`${fieldPosition}: Field name cannot be empty`);
                 }
 
-                // Check for nested fields without children
                 if (field.type === 'Nested') {
                     if (!field.children || field.children.length === 0) {
                         errors.push(`${fieldPosition} "${field.name}": Nested field has no children`);
                     } else {
-                        // Recursively check nested fields
                         checkFields(field.children, level + 1, field.name);
                     }
                 }
             });
 
-            // Check for duplicate names at same level
             const names = fieldsToCheck
                 .filter(field => field.name && field.name.trim() !== '')
                 .map(field => field.name.trim());
@@ -67,7 +62,6 @@ export default function SchemaForm({
             }
         };
 
-        // Start validation
         if (fields.length === 0) {
             errors.push('Schema is empty. Add at least one field.');
         } else {
@@ -89,7 +83,6 @@ export default function SchemaForm({
         }
     };
 
-    // Fix for the Promise error
     const handleFormSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         void methods.handleSubmit(onSubmit)();

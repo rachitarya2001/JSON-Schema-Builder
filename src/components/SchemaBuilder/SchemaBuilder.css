@@ -1,18 +1,15 @@
-/* Top buttons container */
 .schema-buttons {
     display: flex;
     gap: 20px;
     align-items: center;
 }
 
-/* Field rows container */
 .fields-container {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-/* Individual field row */
 .field-row {
     display: flex;
     align-items: center;
@@ -23,7 +20,6 @@
     background-color: #ffffff;
 }
 
-/* Nested fields container */
 .nested-fields {
     display: flex;
     flex-direction: column;
@@ -31,12 +27,10 @@
     margin-top: 12px;
 }
 
-/* Field input styling */
 .field-input {
     flex: 1;
 }
 
-/* Type selector */
 .field-type-select {
     width: 120px;
 }
