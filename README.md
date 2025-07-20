@@ -13,8 +13,8 @@ Modern UI: Clean, professional interface using ShadCN components
 Visual Hierarchy: Clear indentation shows nested field relationships
 
 Demo
-🔗 Live Demo: JSON Schema Builder
-Screenshots
+🔗 Live Demo: <https://json-schema-builder-ruddy.vercel.app/>
+
 The application provides a clean, intuitive interface for building JSON schemas with proper visual hierarchy for nested structures.
 Tech Stack
 
@@ -35,7 +35,7 @@ Installation
 
 Clone the repository
 
-bashgit clone https://github.com/rachitarya2001/JSON-Schema-Builder.git
+bashgit clone <https://github.com/rachitarya2001/JSON-Schema-Builder.git>
 cd JSON-Schema-Builder
 
 Install dependencies
